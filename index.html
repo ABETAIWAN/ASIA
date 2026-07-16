@@ -1579,6 +1579,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
           <span class="f-error" id="err-message"></span>
         </div>
         <button type="submit" id="contact-submit-btn" class="f-submit" data-ja="送信する / 送出" data-zh="送出 / 送信">送信する / 送出</button>
+        <span class="f-error" id="contact-submit-error" style="color:#c0392b;text-align:center;margin-top:10px;"></span>
         <p style="font-size:11px;color:#888;margin-top:12px;line-height:1.8;" data-ja="🔒 いただいた情報は業務目的以外に使用しません。&#10;💡 「まだ具体的ではないけど興味がある」というご連絡も大歓迎です。" data-zh="🔒 您提供的資訊僅用於業務目的。&#10;💡 「還不確定但有興趣」的諮詢也非常歡迎。">🔒 いただいた情報は業務目的以外に使用しません。<br>💡 「まだ具体的ではないけど興味がある」というご連絡も大歓迎です。</p>
       </form>
     </div>
@@ -1711,6 +1712,7 @@ const i18n = {
     sending:     '送信中...',
     submitLabel: '送信する / 送出',
     thanks:      'お問い合わせありがとうございます。内容を確認後、担当者よりご連絡いたします。',
+    submitError: '送信に失敗しました。時間をおいて再度お試しいただくか、直接メールにてご連絡ください。',
   },
   zh: {
     errRequired: '此為必填項目',
@@ -1718,6 +1720,7 @@ const i18n = {
     sending:     '傳送中...',
     submitLabel: '送出 / 送信',
     thanks:      '感謝您的來信。我們確認內容後，將由負責人與您聯絡。',
+    submitError: '傳送失敗，請稍後再試，或直接透過電子郵件與我們聯繫。',
   },
 };
 
@@ -1788,16 +1791,33 @@ function handleContactSubmit(e) {
   if (!valid) return;
 
   const btn = document.getElementById('contact-submit-btn');
+  const submitErr = document.getElementById('contact-submit-error');
+  submitErr.textContent = '';
+  submitErr.classList.remove('show');
   btn.textContent = t.sending;
   btn.disabled = true;
 
-  // Formspree action が未設定ならフォールバック
-  setTimeout(() => {
-    document.getElementById('contact-form-area').style.display = 'none';
-    const thanks = document.getElementById('contact-thanks');
-    thanks.innerHTML = '✅ ' + t.thanks;
-    thanks.style.display = 'block';
-  }, 800);
+  const form = document.getElementById('contact-form');
+  const formData = new FormData(form);
+
+  fetch('https://formspree.io/f/mjgngapw', {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' },
+  })
+    .then(response => {
+      if (!response.ok) throw new Error('submit failed');
+      document.getElementById('contact-form-area').style.display = 'none';
+      const thanks = document.getElementById('contact-thanks');
+      thanks.innerHTML = '✅ ' + t.thanks;
+      thanks.style.display = 'block';
+    })
+    .catch(() => {
+      btn.textContent = t.submitLabel;
+      btn.disabled = false;
+      submitErr.textContent = t.submitError;
+      submitErr.classList.add('show');
+    });
 }
 
 // ===== ブログ =====
