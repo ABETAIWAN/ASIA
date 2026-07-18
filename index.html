@@ -181,6 +181,19 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 /* ===== HIGHLIGHT BOX ===== */
 .hl-box{background:rgba(192,57,43,0.05);border:0.5px solid rgba(192,57,43,0.2);border-radius:8px;padding:1rem;margin:1.25rem 0;}
 .hl-box p{font-size:12px;color:#666;margin:0;line-height:1.8;}
+.price-list{display:flex;flex-direction:column;gap:0.75rem;margin:1rem 0;}
+.price-item{display:flex;align-items:center;gap:0.75rem;background:#f4faf7;border:1px solid #e8d4b8;border-radius:10px;padding:0.9rem 1rem;flex-wrap:wrap;}
+.price-num{font-size:20px;font-weight:700;color:#3A9B72;flex-shrink:0;width:28px;}
+.price-body{flex:1;min-width:180px;}
+.price-body h3{font-size:13px;font-weight:600;margin-bottom:4px;color:#1a1a1a;}
+.price-body p{font-size:11.5px;color:#666;margin:0;line-height:1.7;}
+.price-tag{text-align:right;font-size:13px;font-weight:700;color:#1a6b4a;white-space:nowrap;}
+.price-sub{font-size:11px;font-weight:500;color:#888;margin-top:2px;}
+.price-free{font-size:16px;font-weight:700;color:#3A9B72;}
+@media (max-width:480px){
+  .price-item{flex-direction:column;align-items:flex-start;}
+  .price-tag{text-align:left;}
+}
 
 /* ===== TIMELINE（実績） ===== */
 .timeline{margin:1.25rem 0;}
@@ -1277,6 +1290,43 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
     <div class="sec-tag" style="margin-top:1.5rem;" data-ja="BUDGET · ご予算について" data-zh="BUDGET · 關於預算">BUDGET · <span class="sec-tag-zh">關於預算</span></div>
     <h2 style="font-size:18px;margin-bottom:0.75rem;" data-ja="小さく始めて、大きく育てる" data-zh="從小規模開始，逐步擴大">小さく始めて、大きく育てる</h2>
     <p data-ja="「予算が少ない」というご相談を数多くいただきます。みなかみ町自身も初年度予算20万円という小さな一歩から始め、5年で台湾からの宿泊者数を10倍に伸ばしました。まずは行政視察のアテンドや通訳派遣など、小規模な範囲からご相談いただけます。具体的な金額感は、ご予算に応じてお問い合わせ時にご提案します。" data-zh="我們收到許多「預算有限」的諮詢。水上町自身也是從第一年僅20萬日圓的小規模預算開始，5年內將台灣旅客住宿人數提升10倍。歡迎先從行政考察陪同、口譯派遣等小規模範圍開始諮詢。具體金額將依您的預算於諮詢時提案。">「予算が少ない」というご相談を数多くいただきます。みなかみ町自身も初年度予算20万円という小さな一歩から始め、5年で台湾からの宿泊者数を10倍に伸ばしました。まずは行政視察のアテンドや通訳派遣など、小規模な範囲からご相談いただけます。具体的な金額感は、ご予算に応じてお問い合わせ時にご提案します。</p>
+    <div class="sec-tag" style="margin-top:1.5rem;" data-ja="PRICING · 料金の目安" data-zh="PRICING · 費用參考">PRICING · <span class="sec-tag-zh">費用參考</span></div>
+    <h2 style="font-size:18px;margin-bottom:0.75rem;" data-ja="各業務の料金目安" data-zh="各項服務費用參考">各業務の料金目安</h2>
+    <div class="price-list">
+      <div class="price-item">
+        <div class="price-num">①</div>
+        <div class="price-body">
+          <h3 data-ja="アテンド通訳" data-zh="隨行口譯">アテンド通訳</h3>
+          <p data-ja="台湾現地での商談・視察・公式訪問への同行通訳。" data-zh="台灣現地商談、考察、公務訪問之隨行口譯。">台湾現地での商談・視察・公式訪問への同行通訳。</p>
+        </div>
+        <div class="price-tag">
+          <div data-ja="1日（8時間）45,000円〜" data-zh="一天（8小時）45,000日圓起">1日（8時間）45,000円〜</div>
+          <div class="price-sub" data-ja="半日（4時間）25,000円〜" data-zh="半天（4小時）25,000日圓起">半日（4時間）25,000円〜</div>
+        </div>
+      </div>
+      <div class="price-item">
+        <div class="price-num">②</div>
+        <div class="price-body">
+          <h3 data-ja="コンサル業務" data-zh="顧問諮詢業務">コンサル業務</h3>
+          <p data-ja="台湾側自治体・事業者との連携、事業戦略の助言・調整（月額顧問・定例相談）。現地訪問・通訳・マッチング支援等が発生する場合は別途費用。単年度契約（年度更新型）。" data-zh="協助與台灣地方政府、企業之聯繫及事業戰略建議（月費顧問・定期諮詢）。如需赴台訪問、口譯、媒合對接等，將另行報價。合約為單年度（每年更新）。">台湾側自治体・事業者との連携、事業戦略の助言・調整（月額顧問・定例相談）。現地訪問・通訳・マッチング支援等が発生する場合は別途費用。単年度契約（年度更新型）。</p>
+        </div>
+        <div class="price-tag">
+          <div data-ja="月額 30,000円〜" data-zh="月費 30,000日圓起">月額 30,000円〜</div>
+          <div class="price-sub" data-ja="（基本料金）" data-zh="（基本費用）">（基本料金）</div>
+        </div>
+      </div>
+      <div class="price-item">
+        <div class="price-num">③</div>
+        <div class="price-body">
+          <h3 data-ja="ご相談" data-zh="諮詢">ご相談</h3>
+          <p data-ja="導入検討段階での初回ご相談。" data-zh="導入評估階段之初次諮詢。">導入検討段階での初回ご相談。</p>
+        </div>
+        <div class="price-tag">
+          <div class="price-free" data-ja="無料" data-zh="免費">無料</div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:#888;margin-top:0.5rem;" data-ja="※　上記は目安の料金です。内容・規模により別途お見積りいたします。" data-zh="※　以上為參考費用，將依內容及規模另行報價。">※　上記は目安の料金です。内容・規模により別途お見積りいたします。</p>
     <div class="hl-box">
       <p data-ja="オードリー・タン元デジタル大臣より「台湾と日本の自治体交流を速く深く進めるにはこの方式が有効」と評価された「みなかみ町方式」を全国の自治体にご提供します。" data-zh="前數位部長唐鳳評價「要快速且深度推進台日地方政府交流，此方式最為有效」的「水上町方式」，現提供給全國各地方政府參考運用。">オードリー・タン元デジタル大臣より「台湾と日本の自治体交流を速く深く進めるにはこの方式が有効」と評価された「みなかみ町方式」を全国の自治体にご提供します。</p>
     </div>
