@@ -317,7 +317,7 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .blog-submit-btn{background:#1a6b4a;color:#fff;border:none;padding:9px 22px;border-radius:4px;font-size:12px;font-family:inherit;cursor:pointer;transition:opacity 0.2s;}
 .blog-submit-btn:hover{opacity:0.85;}
 .blog-submit-btn:disabled{opacity:0.55;cursor:not-allowed;}
-.blog-card{background:#fff;border-radius:10px;border:0.5px solid #e0e0e0;padding:1.25rem;margin-bottom:14px;box-shadow:0 1px 8px rgba(0,0,0,0.05);transition:transform 0.2s,box-shadow 0.2s;border-left:3px solid #1a6b4a;}
+.blog-card{background:#fff;border-radius:10px;border:0.5px solid #e0e0e0;padding:1.25rem;margin-bottom:14px;box-shadow:0 1px 8px rgba(0,0,0,0.05);transition:transform 0.2s,box-shadow 0.2s;border-left:3px solid #1a6b4a;cursor:pointer;}
 .blog-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.09);}
 .blog-card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
 .blog-cat-tag{display:inline-block;background:#1a6b4a;color:#fff;font-size:10px;font-weight:500;padding:2px 10px;border-radius:10px;}
@@ -326,6 +326,19 @@ body{font-family:'Helvetica Neue',Arial,'Hiragino Kaku Gothic ProN','Hiragino Sa
 .blog-card-title{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:3px;}
 .blog-card-title-zh{font-size:11px;color:#888;margin-bottom:6px;}
 .blog-card-summary{font-size:12px;color:#666;line-height:1.8;}
+.blog-card-with-img{display:flex;gap:14px;align-items:flex-start;}
+.blog-card-img{width:120px;height:96px;object-fit:cover;border-radius:8px;flex-shrink:0;display:block;}
+.blog-card-body{flex:1;min-width:0;}
+@media (max-width:480px){
+  .blog-card-with-img{flex-direction:column;}
+  .blog-card-img{width:100%;height:160px;}
+}
+.blog-card-toggle{font-size:11px;color:#1a6b4a;font-weight:500;margin-top:10px;}
+.blog-card-detail{display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid #e0e0e0;font-size:12.5px;color:#444;line-height:1.9;cursor:auto;}
+.blog-card-detail.show{display:block;}
+.blog-card-detail p{margin:0 0 0.75em;}
+.blog-card-detail p:last-child{margin-bottom:0;}
+.blog-card-detail-zh{margin-top:14px;padding-top:12px;border-top:0.5px dashed #ccc;color:#888;}
 
 /* ===== CONTACT IMPROVEMENTS ===== */
 .f-error{display:none;color:#3A9B72;font-size:10px;margin-top:3px;font-weight:500;}
@@ -1873,6 +1886,30 @@ function handleContactSubmit(e) {
 // ===== ブログ =====
 const blogPosts = [
   {
+    id: 4, category: '交流', emoji: '🎓', image: 'images/blog/2026-07-honda-lecture.jpg',
+    titleJa: '海を渡った沼高生 ― 台湾・逢甲大学で学ぶ本多真那士さんが母校で講演',
+    titleZh: '遠渡重洋的沼高學生 ― 就讀台灣逢甲大學的本多真那士回母校演講',
+    summaryJa: '6年前にみなかみ町中学生海外派遣事業に参加したことをきっかけに台湾進学を決意した本多真那士さん。母校・沼田高校で後輩たちに向けて講演を行いました。',
+    summaryZh: '六年前參加水上町中學生海外派遣事業，因而決心赴台升學的本多真那士。他返回母校沼田高中，向學弟妹們發表了演講。',
+    bodyJa: `
+      <p>群馬県立沼田高等学校（沼高）出身で、現在は台湾・逢甲大学（Feng Chia University）に在学中の本多真那士さんが、7月3日、母校・沼田高校で在校生に向けて講演を行いました。</p>
+      <p>本多さんが台湾進学を意識したきっかけは、6年前にみなかみ町中学生海外派遣事業に参加したことでした。沼田高校から直接海外の大学へ進学する例は当時としては珍しく、周囲からは様々な意見があったといいますが、その挑戦の道のりを、後輩たちは真剣な眼差しで聞き入っていました。</p>
+      <p>講演では、逢甲大学での学生生活についても紹介。授業で使用する教科書やテストは英語、教授による講義は中国語で行われるなど、二言語を使いこなしながら学ぶ日々の様子が語られました。</p>
+      <p>将来の進路については、中学生の頃は「マーボーさんの後継者になる」と話していた本多さんですが、現在は「英語と中国語を活かして金融関係に進みたい」と、明確な将来設計を描いています。</p>
+      <p>また、本多さんに続き、今年9月から台湾への留学を控えている沼田高校の後輩がもう1人いるとのこと。海を渡る若者が続いていることを、うれしく感じています。</p>
+      <p>今回の講演は上毛新聞・読売新聞でも取り上げられました。</p>
+    `,
+    bodyZh: `
+      <p>群馬縣立沼田高中（沼高）畢業、目前就讀台灣逢甲大學的本多真那士，於7月3日回到母校沼田高中，向在校生發表了演講。</p>
+      <p>本多會考慮赴台升學，契機是六年前參加了水上町中學生海外派遣事業。從沼田高中直接考取海外大學，在當時相當罕見，因此周遭曾有不少不同的意見。學弟妹們也以認真的眼神，聆聽學長分享這段挑戰之路。</p>
+      <p>演講中，本多也介紹了在逢甲大學的求學生活：課堂使用的教科書與考試皆為英文，而教授授課則以中文進行，展現出運用雙語學習的日常。</p>
+      <p>談到未來的規劃，國中時期曾說「要成為馬博桑的接班人」的本多，如今則明確表示「希望運用英文與中文的能力，投入金融業」。</p>
+      <p>此外，繼本多之後，沼田高中還有一位學弟妹，預計今年9月起赴台留學。看到勇於遠渡重洋的年輕人持續出現，令人相當欣慰。</p>
+      <p>本次演講也獲得上毛新聞、讀賣新聞的報導。</p>
+    `,
+    date: '2026-07-03',
+  },
+  {
     id: 1, category: '交流', emoji: '🤝',
     titleJa: '台南市議会×みなかみ町議会 友好交流協定を締結',
     titleZh: '台南市議會×水上町議會 締結友好交流協定',
@@ -1916,8 +1953,8 @@ function renderBlogList() {
     list.innerHTML = '<p style="font-size:13px;color:#888;text-align:center;padding:2rem 0;">記事がありません。</p>';
     return;
   }
-  list.innerHTML = blogPosts.map(p => `
-    <div class="blog-card">
+  list.innerHTML = blogPosts.map(p => {
+    const body = `
       <div class="blog-card-header">
         <span class="blog-card-emoji">${p.emoji}</span>
         <span class="blog-cat-tag">${p.category}</span>
@@ -1926,8 +1963,35 @@ function renderBlogList() {
       <div class="blog-card-title">${p.titleJa}</div>
       ${p.titleZh ? `<div class="blog-card-title-zh">${p.titleZh}</div>` : ''}
       <div class="blog-card-summary">${p.summaryJa}</div>
+    `;
+    const mainContent = p.image ? `
+      <div class="blog-card-with-img">
+        <img class="blog-card-img" src="${p.image}" alt="${p.titleJa}" loading="lazy">
+        <div class="blog-card-body">${body}</div>
+      </div>
+    ` : body;
+    const detail = (p.bodyJa || p.bodyZh) ? `
+      <div class="blog-card-toggle" id="blog-toggle-${p.id}">▶ 続きを読む</div>
+      <div class="blog-card-detail" id="blog-detail-${p.id}">
+        ${p.bodyJa || ''}
+        ${p.bodyZh ? `<div class="blog-card-detail-zh">${p.bodyZh}</div>` : ''}
+      </div>
+    ` : '';
+    return `
+    <div class="blog-card" onclick="toggleBlogDetail(${p.id})">
+      ${mainContent}
+      ${detail}
     </div>
-  `).join('');
+  `;
+  }).join('');
+}
+
+function toggleBlogDetail(id) {
+  const detail = document.getElementById('blog-detail-' + id);
+  const toggle = document.getElementById('blog-toggle-' + id);
+  if (!detail) return;
+  const open = detail.classList.toggle('show');
+  toggle.textContent = open ? '▲ 閉じる' : '▶ 続きを読む';
 }
 
 function toggleBlogForm() {
